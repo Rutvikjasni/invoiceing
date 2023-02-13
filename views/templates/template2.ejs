@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Template3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .page {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+      }
+
+      .address {
+        line-height: 22px;
+        display: flex;
+        flex-direction: column;
+        padding: 42px 0;
+        border-bottom: 1px solid #be0c0c;
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+        line-height: 28px;
+      }
+
+      .block h3 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+      }
+
+      .invoice {
+        display: flex;
+        flex-direction: column;
+        line-height: 33px;
+        font-size: 18px;
+        color: #be0c0c;
+      }
+
+      .in {
+        display: flex;
+        line-height: 34px;
+        flex-direction: column;
+      }
+
+      .main-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 24px 0 62px 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 2px solid lightgray;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background: #be0c0c;
+        color: white;
+        text-align: center;
+      }
+
+      .total {
+        float: right;
+        display: flex;
+        gap: 80px;
+        margin-top: 24px;
+      }
+
+      .block1 {
+        display: flex;
+        flex-direction: column;
+        line-height: 38px;
+        align-items: flex-end;
+      }
+
+      .theTitle {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .right {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px 0;
+        line-height: 22px;
+        border-top: 1px solid #be0c0c;
+      }
+
+      .term-condition {
+        font-size: 20px;
+        padding-bottom: 28px;
+        color: #be0c0c;
+      }
+    </style>
+</head>
+<body>
+<div>
+    <div class='page'>
+        <div class='header'></div>
+        <div class='address'>
+            <div style='margin-bottom: 24px;font-size: 22px;color: #be0c0c;'><%= personData.name %></div>
+            <div><%= personData.address %></div>
+        </div>
+        <div class='main-block'>
+            <div class='block'>
+                <div style='padding-bottom: 8px;color: #be0c0c;'><%= personData.billTo %> </div>
+                <div><%= personData.billToAddress %></div>
+            </div>
+            <div class='invoice'>
+                <div>Invoice #</div>
+                <div>Invoice Date</div>
+                <div>Due Date</div>
+            </div>
+            <div class='in'>
+                <div style='text-align: end;'><%= personData.invoiceNo %></div>
+                <div><%= personData.invoiceDate %></div>
+                <div><%= personData.dueDate %></div>
+            </div>
+        </div>
+        <table style='margin-top: 28px'>
+            <tr class='table-header'>
+                <th>DESCRIPTION</th>
+                <th>RATE</th>
+                <th>HOURS</th>
+                <th>AMOUNT</th>
+            </tr>
+            <% for(let personDataLines of personData.lines) { %>
+                <tr>
+                    <td><%= personDataLines.description %></td>
+                    <td><%= personDataLines.hours %></td>
+                    <td style='text-align: end'><%= personDataLines.rate %></td>
+                    <td style='text-align: end'><%= personDataLines.amount %></td>
+                </tr>
+            <% } %>
+        </table>
+        <div class='total'>
+            <div class='block1'>
+                <div>Subtotal</div>
+                <div>Rounding</div>
+                <b>Total</b>
+            </div>
+            <div class='block1'>
+                <div><%= personData.subTotal %></div>
+                <div><%= personData.rounding %></div>
+                <b><span>&#8377;</span><%= personData.total %></b>
+            </div>
+        </div>
+        <div class='theTitle active'>
+            <div class='right'>
+                <div class='term-condition'>Terms & Conditions</div>
+                <div style='padding-bottom: 28px;'>Payment is due within 15 days</div>
+                <% if(personData.bank){ %>
+                    <div><%= personData.bank ;%></div>
+                    <div>Account Number :<%= personData.accountNo ;%></div>
+                    <div>IFSC Code :<%= personData.ifscCode ;%></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

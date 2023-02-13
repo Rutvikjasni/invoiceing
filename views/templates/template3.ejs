@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Template4</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Abel&display=swap' rel='stylesheet'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playball&display=swap'
+          rel='stylesheet'>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .page {
+        font-family: 'Abel', sans-serif;
+        font-weight: 400;
+        background-image: url('./assets/layered-waves-haikei (2).png');
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      .header {
+        color: #212E5E;
+        font-size: 3em;
+        margin: 0;
+        padding-top: 36px;
+      }
+
+      .address {
+        line-height: 22px;
+        display: flex;
+        flex-direction: column;
+        margin: 22px 0;
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+        line-height: 22px;
+      }
+
+      .block h3 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+        color: #212E5E;
+      }
+
+      .invoice {
+        display: flex;
+        flex-direction: column;
+        line-height: 33px;
+        font-size: 23px;
+        color: #212E5E;
+      }
+
+      .in {
+        display: flex;
+        line-height: 34px;
+        flex-direction: column;
+      }
+
+      .main-block {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border-bottom: 2px solid #087466;
+      }
+
+      .table-header {
+        text-align: start;
+        font-size: 25px;
+        border-top: 2px solid #087466;
+        border-bottom: 2px solid #087466;
+        color: #212E5E;
+      }
+
+      th {
+        padding: 5px;
+        text-align: start;
+      }
+
+      td {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .total {
+        float: right;
+        display: flex;
+        gap: 50px;
+        margin-top: 24px;
+      }
+
+      .block1 {
+        display: flex;
+        flex-direction: column;
+        line-height: 38px;
+        align-items: flex-end;
+      }
+
+      .theTitle {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+
+      .theTitle h1 {
+        font-size: 3.5rem;
+        color: #212E5E;
+      }
+
+      .right {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px 0;
+        line-height: 22px;
+      }
+
+      .term-condition {
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #212E5E;
+        font-weight: 600;
+        padding-bottom: 9px;
+      }
+
+    </style>
+</head>
+<body>
+<div>
+    <div class='page'>
+        <h1 class='header'>INVOICE</h1>
+        <div class='address'>
+            <h4 style='margin: 0'><%= personData.name %></h4>
+            <b><%= personData.address %></b>
+        </div>
+        <div class='main-block'>
+            <div class='block'>
+                <h3><%= personData.billTo %></h3>
+                <b><%= personData.billToAddress %></b>
+            </div>
+            <div class='invoice'>
+                <b>INVOICE #</b>
+                <b>INVOICE DATE</b>
+                <b>DUEDATE</b>
+            </div>
+            <div class='in'>
+                <b><%= personData.invoiceNo %></b>
+                <b><%= personData.invoiceDate %></b>
+                <b><%= personData.dueDate %></b>
+            </div>
+        </div>
+        <table style='margin-top: 28px'>
+            <tr class='table-header'>
+                <th>DESCRIPTION</th>
+                <th>RATE</th>
+                <th style="text-align: end;">HOURS</th>
+                <th style="text-align: end;">AMOUNT</th>
+            </tr>
+            <% for(let personDataLines of personData.lines) { %>
+                <tr>
+                    <td><%= personDataLines.description %></td>
+                    <td><%= personDataLines.hours %></td>
+                    <td style='text-align: end'><%= personDataLines.rate %></td>
+                    <td style='text-align: end'><%= personDataLines.amount %></td>
+                </tr>
+            <% } %>
+        </table>
+        <div class='total'>
+            <div class='block1'>
+                <b>Subtotal</b>
+                <b>Rounding</b>
+                <b style='font-size: 25px;color: #212E5E'>Total</b>
+            </div>
+            <div class='block1'>
+                <b><%= personData.subTotal %></b>
+                <b><%= personData.rounding %></b>
+                <b style='font-size: 25px;color: #212E5E'><span>&#8377;</span><%= personData.total %></b>
+            </div>
+        </div>
+        <div class='theTitle active'>
+            <div class='right'>
+                <div class='term-condition'>TERMS & CONDITIONS</div>
+                <b style='padding-bottom: 28px;'>Payment is due within 15 days</b>
+                <% if(personData.bank){ %>
+                    <b><%= personData.bank %></b>
+                    <b>Account Number :<%= personData.accountNo %></b>
+                    <b>IFSC Code :<%= personData.ifscCode %></b>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

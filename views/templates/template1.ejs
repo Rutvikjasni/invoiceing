@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Template2</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap' rel='stylesheet'>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .page {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+      }
+
+      .header {
+        height: 32px;
+        width: 100%;
+        border-top: 32px solid #3E73B9;
+      }
+
+      .address {
+        line-height: 22px;
+        display: flex;
+        flex-direction: column;
+        margin: 8px 0 38px 0;
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+        line-height: 22px;
+      }
+
+      .block h3 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+      }
+
+      .invoice {
+        display: flex;
+        flex-direction: column;
+        line-height: 33px;
+        font-size: 23px;
+      }
+
+      .in {
+        display: flex;
+        line-height: 34px;
+        flex-direction: column;
+      }
+
+      .main-block {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .invoice-total {
+        display: flex;
+        justify-content: space-between;
+        font-size: 32px;
+        border-top: 2px solid;
+        border-bottom: 2px solid;
+        padding: 15px;
+        margin-top: 26px;
+        font-weight: 700;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th {
+        padding: 9px;
+        text-align: start;
+      }
+
+      td {
+        padding: 10px;
+        font-size: 18px;
+      }
+
+      .total {
+        float: right;
+        display: flex;
+        gap: 80px;
+        margin-top: 24px;
+      }
+
+      .block1 {
+        display: flex;
+        flex-direction: column;
+        line-height: 38px;
+        align-items: flex-end;
+      }
+
+      .theTitle {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 32px solid #3E73B9;
+      }
+
+      .right {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-bottom: 26px;
+        line-height: 22px;
+      }
+
+      .term-condition {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 28px;
+      }
+    </style>
+</head>
+<body>
+<div>
+    <div class='page'>
+        <div class='header'></div>
+        <div class='address'>
+            <h4 style='margin-top: 0;'><%= personData.name %></h4>
+            <div><%= personData.address %></div>
+        </div>
+        <div class='main-block'>
+            <div class='block'>
+                <h3><%= personData.billTo %></h3>
+                <div><%= personData.billToAddress %></div>
+            </div>
+            <div class='invoice'>
+                <div>INVOICE #</div>
+                <div>INVOICE DATE</div>
+                <div>DUE DATE</div>
+            </div>
+            <div class='in'>
+                <div style='text-align: end;'><%= personData.invoiceNo %></div>
+                <div><%= personData.invoiceDate %></div>
+                <div><%= personData.dueDate %></div>
+            </div>
+        </div>
+        <div class='invoice-total'>
+            <div>Invoice Total</div>
+            <div><span>&#8377;</span><%= personData.total %></div>
+        </div>
+        <table style='margin-top: 28px'>
+            <tr class='table-header'>
+                <th>DESCRIPTION</th>
+                <th>RATE</th>
+                <th style='text-align: end'>HOURS</th>
+                <th style='text-align: end'>AMOUNT</th>
+            </tr>
+            <% for(let personDataLines of personData.lines) { %>
+            <tr>
+                <td><%= personDataLines.description %></td>
+                <td><%= personDataLines.hours %></td>
+                <td style='text-align: end'><%= personDataLines.rate %></td>
+                <td style='text-align: end'><%= personDataLines.amount %></td>
+            </tr>
+            <% } %>
+        </table>
+        <div class='total'>
+            <div class='block1'>
+                <b>Subtotal</b>
+                <b>Rounding</b>
+            </div>
+            <div class='block1'>
+                <b><%= personData.subTotal %></b>
+                <b><%= personData.rounding %></b>
+            </div>
+        </div>
+        <div class='theTitle active'>
+            <div class='right'>
+                <div class='term-condition'>TERMS & CONDITIONS</div>
+                <div style='padding-bottom: 28px;'>Payment is due within 15 days</div>
+                <% if(personData.bank){ %>
+                    <div><%= personData.bank ;%></div>
+                    <div>Account Number :<%= personData.accountNo ;%></div>
+                    <div>IFSC Code :<%= personData.ifscCode ;%></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

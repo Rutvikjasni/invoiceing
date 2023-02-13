@@ -1,0 +1,91 @@
+<!--Opening the ejs tags for including header file-->
+<%- include("./partials/header") %>
+<!-- Creating a form where action will
+    be on "/" and the method will be "POST" -->
+<style>
+  .styled-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+  }
+
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    font-weight: bold;
+    color: #009879;
+  }
+
+  .button {
+    background-color: #009879;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #dddddd;
+    color: #009879;
+  }
+</style>
+
+<form action="/" method="POST" style="text-align: center">
+    <h1>PERSON</h1>
+    <div style='margin: 20px'>
+        <span>Date:</span>
+        <input type="date" name="date" value="date"/>
+    </div>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Checkbox</th>
+            <th>Person</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i = 0; i < people.length; i++) { %>
+            <tr>
+                <td style="width:30%">
+                    <input type="checkbox"
+                           name="selectedPerson"
+                           value=<%= people[i].id; %>></td>
+                <td><%= people[i].name; %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <button class="button">Submit</button>
+</form>
+<!--Opening the ejs tags for including footer file-->
+<%- include("./partials/footer") %>
