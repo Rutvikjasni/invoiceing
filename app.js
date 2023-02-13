@@ -266,6 +266,10 @@ app.get('/', function(req, res) {
   res.render('form', { people: person });
 });
 
+app.get('/contractor', function(req, res) {
+  res.render('contractor', { people: person });
+});
+
 // form submission
 app.get('/result', (req, res) => {
   res.render('result');
@@ -295,6 +299,10 @@ app.post('/', async function(req, res) {
 
   res.render('form', { people: person });
 });
+
+app.post('/contractor',function(req, res) {
+  console.log(req,'req');
+})
 
 // Starting the server at port 3000
 app.listen(3000, function() {
