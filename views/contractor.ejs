@@ -34,7 +34,7 @@
                 <div class="form-floating">
                     <textarea class="form-control"
                               required
-                              name="Address"
+                              name="address"
                               placeholder="Leave a comment here"
                               id="floatingTextarea2"
                               style="height: 100px"></textarea>
@@ -44,12 +44,14 @@
         </tr>
         <tr>
             <td>Template :</td>
-            <td><input type="text"
+            <td>
+                <input type="text"
                        required
-                       name="Template"
+                       name="template"
                        class="form-control"
                        id="basic-url"
-                       aria-describedby="basic-addon3"/></td>
+                       aria-describedby="basic-addon3"/>
+            </td>
         </tr>
         <tr>
             <td>Bill To :</td>
@@ -75,32 +77,48 @@
             </td>
         </tr>
         <tr>
+            <td>Email :</td>
+            <td><input type="email"
+                       name="email"
+                       class="form-control"
+                       id="basic-url"
+                       aria-describedby="basic-addon3"
+                       required/>
+            </td>
+        </tr>
+        <tr>
             <td>Work Desc :</td>
-            <td><input type="text"
+            <td>
+                <input type="text"
                        required
                        name="workDesc"
                        class="form-control"
                        id="basic-url"
-                       aria-describedby="basic-addon3"/></td>
+                       aria-describedby="basic-addon3"/>
+                </td>
         </tr>
         <tr>
             <td>Rate :</td>
-            <td><input type="number" name="rate" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            <td>
+                <input type="number" name="rate" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
             </td>
         </tr>
         <tr>
             <td>Bank Name :</td>
-            <td><input type="text" name="bankName" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            <td>
+                <input type="text" name="bankName" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
             </td>
         </tr>
         <tr>
             <td>ACC No :</td>
-            <td><input type="text" name="accNo" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            <td>
+                <input type="number" name="accNo" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
             </td>
         </tr>
         <tr>
             <td>IFSC Code :</td>
-            <td><input type="text" name="ifscCode" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            <td>
+                <input type="text" name="ifscCode" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
             </td>
         </tr>
         </tbody>

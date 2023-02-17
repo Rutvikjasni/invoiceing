@@ -147,13 +147,13 @@
     <div class='page'>
         <h1 class='header'>INVOICE</h1>
         <div class='address'>
-            <h4 style='margin: 0'><%= personData.name %></h4>
-            <b><%= personData.address %></b>
+            <h4 style='margin: 0'><%= personData.name ;%></h4>
+            <b><%= personData.address ;%></b>
         </div>
         <div class='main-block'>
             <div class='block'>
-                <h3><%= personData.billTo %></h3>
-                <b><%= personData.billToAddress %></b>
+                <h3><%= personData.billTo ;%></h3>
+                <b><%= personData.billToAddress ;%></b>
             </div>
             <div class='invoice'>
                 <b>INVOICE #</b>
@@ -161,27 +161,20 @@
                 <b>DUEDATE</b>
             </div>
             <div class='in'>
-                <b><%= personData.invoiceNo %></b>
-                <b><%= personData.invoiceDate %></b>
-                <b><%= personData.dueDate %></b>
+                <b><%= personData.invoiceNo ;%></b>
+                <b><%= personData.invoiceDate ;%></b>
+                <b><%= personData.dueDate ;%></b>
             </div>
         </div>
-        <table style='margin-top: 28px'>
-            <tr class='table-header'>
-                <th>DESCRIPTION</th>
-                <th>RATE</th>
-                <th>HOURS</th>
-                <th>AMOUNT</th>
-            </tr>
-            <% for(let personDataLines of personData.lines) { %>
-                <tr>
-                    <td><%= personDataLines.description %></td>
-                    <td><%= personDataLines.hours %></td>
-                    <td style='text-align: end'><%= personDataLines.rate %></td>
-                    <td style='text-align: end'><%= personDataLines.amount %></td>
-                </tr>
-            <% } %>
-        </table>
+        <!--        <table style='margin-top: 28px'>-->
+        <!--            <tr class='table-header'>-->
+        <!--                <th>DESCRIPTION</th>-->
+        <!--                <th>RATE</th>-->
+        <!--                <th>HOURS</th>-->
+        <!--                <th>AMOUNT</th>-->
+        <!--            </tr>-->
+
+        <!--        </table>-->
         <div class='total'>
             <div class='block1'>
                 <b>Subtotal</b>
@@ -189,9 +182,9 @@
                 <b style='font-size: 25px;color: #212E5E'>Total</b>
             </div>
             <div class='block1'>
-                <b><%= personData.subTotal %></b>
-                <b><%= personData.rounding %></b>
-                <b style='font-size: 25px;color: #212E5E'><span>&#8377;</span><%= personData.total %></b>
+                <b><%= personData.subTotal ;%></b>
+                <b><%= personData.rounding ;%></b>
+                <b style='font-size: 25px;color: #212E5E'><span>&#8377;</span><%= personData.rate ;%></b>
             </div>
         </div>
         <div class='theTitle active'>
@@ -199,10 +192,10 @@
             <div class='right'>
                 <div class='term-condition'>TERMS & CONDITIONS</div>
                 <b style='padding-bottom: 28px;'>Payment is due within 15 days</b>
-                <% if(personData.bank){ %>
-                    <b><%= personData.bank %></b>
-                    <b>Account Number :<%= personData.accountNo %></b>
-                    <b>IFSC Code :<%= personData.ifscCode %></b>
+                <% if(personData.bankName){ %>
+                    <b>Bank Name :<%= personData.bankName ;%></b>
+                    <b>Account Number :<%= personData.accNo ;%></b>
+                    <b>IFSC Code :<%= personData.ifscCode ;%></b>
                 <% } %>
             </div>
         </div>

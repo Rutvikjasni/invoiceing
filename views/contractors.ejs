@@ -1,0 +1,123 @@
+<%- include("./partials/header") %>
+<style>
+  .form-control:focus {
+    border-color: unset;
+    box-shadow: unset;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  .button-type {
+    margin: 8px;
+  }
+
+</style>
+<form action="/contractors/:contractorId" method="POST">
+    <h1 class="text-center">E-Bill Book Form</h1>
+    <h4  class="text-center">name : <%= selectedPeople.name %></h4>
+    <table class="m-auto">
+        <tbody>
+        <tr>
+            <td>March :</td>
+            <td>
+                <input type="number" name="month3" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>April :</td>
+            <td>
+                <input type="number" name="month4" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>May :</td>
+            <td>
+                <input type="number" name="month5" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>June :</td>
+            <td>
+                <input type="number" name="month6" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>July :</td>
+            <td>
+                <input type="number" name="month7" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>August :</td>
+            <td>
+                <input type="number" name="month8" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>September :</td>
+            <td>
+                <input type="number" name="month9" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>October :</td>
+            <td>
+                <input type="number"
+                       name="month10"
+                       class="form-control"
+                       id="basic-url"
+                       aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>November :</td>
+            <td>
+                <input type="number"
+                       name="month11"
+                       class="form-control"
+                       id="basic-url"
+                       aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>December :</td>
+            <td>
+                <input type="number"
+                       name="month12"
+                       class="form-control"
+                       id="basic-url"
+                       aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>January :</td>
+            <td>
+                <input type="number" name="month1" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        <tr>
+            <td>February :</td>
+            <td>
+                <input type="number" name="month2" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success button-type">Submit</button>
+        <button type="button" class="btn btn-light button-type" onclick="changeUrl()">Cancel</button>
+    </div>
+</form>
+<script>
+  function changeUrl() {
+    let ok = confirm('Are you sure want to delete?');
+
+    if (ok === true) {
+      window.location.href = '/';
+    }
+  }
+</script>
+<%- include("./partials/footer") %>

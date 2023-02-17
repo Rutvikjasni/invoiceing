@@ -71,6 +71,7 @@
         <tr>
             <th>Checkbox</th>
             <th>Person</th>
+            <th>Link</th>
         </tr>
         </thead>
         <tbody>
@@ -81,6 +82,7 @@
                            name="selectedPerson"
                            value=<%= people[i].id; %>></td>
                 <td><%= people[i].name; %></td>
+                <td><a href=contractors/<%= people[i].id %>>link</a></td>
             </tr>
         <% } %>
         </tbody>
